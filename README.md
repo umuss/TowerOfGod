@@ -1,4 +1,6 @@
 # Info generali
+- Creare "progetto vuoto 3D" su Unity e poi farci dentro *git pull*
+
 - Due classi (Mago e Guerriero)
 - Obiettivo: uccidere tutti i nemici di livello in livello
 
