@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private Rigidbody _rb;
     [SerializeField] private float _speed = 5;
+    [SerializeField] private float _turnSpeed = 180; // velocità di rotazione, vogliamo che ruoti di 360 gradi alla volta
     private Vector3 _input; // vettore in input
 
     void GatherInput()
@@ -39,10 +40,12 @@ public class PlayerController : MonoBehaviour
         if (_input != Vector3.zero)
         {
             // angolo relativo tra dove siamo e dove vogliamo essere 
-            var relative = (transform.position + _input) - transform.position;
+            var relative = (transform.position + _input.ToIso()) - transform.position;
             // trasformiamo questa cosa in una rotazione
             var rot = Quaternion.LookRotation(relative, Vector3.up);
             transform.rotation = rot;
+            // TODO aggiusta
+            //transform.rotation = Quaternion.RotateTowards(transform.rotation, rot, _turnSpeed * Time.deltaTime);
 
         }
     }
